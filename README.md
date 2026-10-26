@@ -1,2 +1,2 @@
-# CIC_V4
-CIC_V4
+# Civic Impact Corps
+
