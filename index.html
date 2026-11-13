@@ -157,11 +157,8 @@ details .text b{color:var(--ink)}
 /* book */
 .book{display:grid;grid-template-columns:260px 1fr;gap:44px;align-items:start}
 @media (max-width:760px){.book{grid-template-columns:1fr}}
-.cover{aspect-ratio:2/3;max-width:260px;width:100%;background:var(--hero);color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:space-between;
-  background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);background-size:18px 18px;border:2px solid var(--ink)}
-.cover .t{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:2.1rem;line-height:.92}
-.cover .s{font-size:.82rem;color:#D3DEF3}
-.cover .a{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--caution)}
+.cover{display:block;max-width:260px;width:100%;border:2px solid var(--ink);line-height:0}
+.cover img{display:block;width:100%;height:auto}
 .video{margin-top:8px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 
 /* faq */
@@ -215,7 +212,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
   <div class="wrap">
     <span class="spec">Civic Impact Corps · The voice of “We the People” in Congressional oversight</span>
     <h1 id="hero-h">Sign the pledge to renovate Congress <span class="star">★</span></h1>
-    <p class="lede">Congress is running an operating system built for 1789. Swapping out the people inside hasn’t fixed it, because the problem is the machine, not the operators. <strong>Join the Corps and put every candidate on the record.</strong></p>
+    <p class="lede">Congress is running an operating system built for 1789. Swapping out the people inside hasn’t fixed it, because the problem is the machine, not the operators. <strong>Join the Corps and put every new member of the 120th Congress on the record for renovation support or not.</strong></p>
     <div class="countdown" id="countdown" aria-live="polite"><b id="days">15</b><span id="days-label">days until Election Day · Nov 3, 2026</span></div>
     <div class="ctas">
       <a class="btn btn-caution" href="#join">Join the Corps</a>
@@ -241,7 +238,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
           <span class="copy-msg" id="copy-msg" role="status"></span>
         </div>
       </div>
-      <p class="prose">Candidates who sign a commitment to co-sponsor the amendment once in office earn the CIC voting block. If both candidates in a race sign, the block is shared based on the preference of that state’s CIC members.</p>
+      <p class="prose">Elected members who sign a commitment to co-sponsor or support the renovation amendment development process once in office earn the CIC members’ support.</p>
     </div>
 
     <form class="form" id="join" novalidate>
@@ -282,9 +279,9 @@ footer .fine{font-size:.82rem;max-width:90ch}
     </div>
     <div class="timeline">
       <div class="stage now">
-        <span class="when">Stage 1 · Through Nov 3, 2026</span>
-        <h3>Build the voting block</h3>
-        <p>Organize millions of voters, especially Gen Z, the generation set to inherit the debt. CIC representatives in every state bring the draft amendment to every Congressional campaign.</p>
+        <span class="when">Stage 1 · Between Nov 3, 2026 and Jan 3, 2027</span>
+        <h3>Build the CIC membership across the nation</h3>
+        <p><b>Goal:</b> Organize millions of voters, especially Gen Z, the generation set to inherit the debt. CIC representatives in every state bring the draft amendment to every Congressional Member.</p>
       </div>
       <div class="stage">
         <span class="when">Stage 2 · 120th Congress, year one</span>
@@ -305,28 +302,29 @@ footer .fine{font-size:.82rem;max-width:90ch}
   <div class="wrap">
     <div class="sec-head">
       <span class="spec">Why renovate</span>
-      <h2 id="why-h">This isn’t idealism. It’s arithmetic.</h2>
-      <p class="prose">Under every president, every party and every configuration of leadership, Congress has stayed below 25% approval for nearly two decades. When changing the players doesn’t fix the game, the game is the problem.</p>
+      <h2 id="why-h">Why renovate Congress?</h2>
+      <p class="prose">Under every president, every party and every configuration of leadership, Congress has slid from 84% to 10% approval over the last 13 two-year Congresses.</p>
+      <p class="prose">It doesn’t take a rocket scientist to see the problem is the organization: the processes and rules designed in 1789 need updating to serve 21st-century America.</p>
     </div>
     <div class="num-grid">
       <div class="num"><span class="big">84% <small>→</small> 10%</span><p>Congressional approval in 1999, then in April 2026 (Gallup).</p></div>
-      <div class="num"><span class="big">10,000 <small>/</small> ~40</span><p>Bills introduced each year versus laws passed. A bakery that delivered 40 of 10,000 cakes would be out of business.</p></div>
+      <div class="num"><span class="big">16,000 <small>/</small> 38</span><p>With a backlog of 16,000 written bills and only 38 laws passed in 2025, the core process of the “Legislative Branch” is broken.</p></div>
       <div class="num"><span class="big">2</span><p>People decide what 340 million Americans’ government works on: the Speaker of the House and the Senate Majority Leader.</p></div>
-      <div class="num"><span class="big">$38.96T</span><p>National debt, about $115,000 for every American, including kids born today. Interest alone costs about $1 trillion a year.</p></div>
-      <div class="num"><span class="big">45%</span><p>Americans who identify as Independent (Gallup 2026), the largest group in the country, with zero structural representation in Congress.</p></div>
+      <div class="num"><span class="big">$40.6T</span><p>National debt as of late October 2026. That equals approximately $121,302 per citizen and $290,259 per taxpayer.</p></div>
+      <div class="num"><span class="big">47%</span><p>Americans who identify as Independent (Gallup 2026), the largest group in the country, with zero structural representation in Congress.</p></div>
       <div class="num"><span class="big">$277B</span><p>Severe-weather losses in 2024 (NOAA), about $5.3 billion a week. The federal budget doesn’t account for it.</p></div>
     </div>
     <div class="compare" aria-label="Congress in 1789 compared with today">
       <div>
         <span class="spec">Designed for · 1789</span>
-        <dl><dt>~38</dt><dd>members</dd><dt>~100</dt><dd>bills per year</dd><dt>3.9M</dt><dd>Americans</dd></dl>
+        <dl><dt>81</dt><dd>members</dd><dt>~100</dt><dd>bills per year</dd><dt>3.9M</dt><dd>Americans</dd></dl>
       </div>
       <div>
         <span class="spec">Running today</span>
-        <dl><dt>535</dt><dd>members</dd><dt>10,000+</dt><dd>bills per year</dd><dt>340M</dt><dd>Americans</dd></dl>
+        <dl><dt>535</dt><dd>members</dd><dt>16,000+</dt><dd>written bills in backlog</dd><dt>340M</dt><dd>Americans</dd></dl>
       </div>
     </div>
-    <p class="source">Figures from <em>Renovation of the People’s House</em>, drawing on Gallup, NOAA and U.S. Treasury data current as of the manuscript date.</p>
+    <p class="source">Figures from <em>Only “We, The People” Can Save Democracy</em>, drawing on Gallup, NOAA and U.S. Treasury data current as of the manuscript date.</p>
   </div>
 </section>
 
@@ -356,7 +354,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
     <div class="sec-head">
       <span class="spec">The blueprint</span>
       <h2 id="amend-h">Three amendments, one package</h2>
-      <p class="prose">The CIC pledge asks candidates to co-sponsor all three. Each fixes a distinct structural failure, and the failures interact. Fixing only one leaves the others to re-create the dysfunction.</p>
+      <p class="prose">The CIC pledge asks new Members to co-sponsor all three. Each fixes a distinct structural failure, and the failures interact. Fixing only one leaves the others to re-create the dysfunction.</p>
     </div>
     <div class="amend-grid">
       <article class="amend">
@@ -430,7 +428,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
   <div class="wrap">
     <div class="sec-head">
       <span class="spec">Get involved</span>
-      <h2 id="act-h">Five things you can do before Election Day</h2>
+      <h2 id="act-h">Five things you can do to support creating the 21st-century Congress needed to best serve future generations</h2>
       <p class="prose">None of these require you to become a politician, a policy expert or a full-time activist. You already know how to organize a fandom, a study group or a Discord. The skills are the ones you have. Only the target is new.</p>
     </div>
     <ol class="steps">
@@ -453,7 +451,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
     <div class="commit-grid">
       <div><h3>Same standard for every party</h3><p>Accountability applies equally to every member. A Democrat who spreads disinformation faces the same scale as a Republican who does. The standard is professional conduct, not political position.</p></div>
       <div><h3>The pledge is open to anyone</h3><p>Any candidate of any party, or no party, can earn the CIC voting block by committing to co-sponsor the amendment. If both candidates sign, members in that state decide how to share it.</p></div>
-      <div><h3>A voice for the Independent 45%</h3><p>Congress was designed for two parties. The renovation gives Independents real standing: committee access, proportional representation and floor procedures that don’t assume binary party loyalty.</p></div>
+      <div><h3>A voice for the Independent 47%</h3><p>Congress was designed for two parties. The renovation gives Independents real standing: committee access, proportional representation and floor procedures that don’t assume binary party loyalty.</p></div>
     </div>
     <div class="levels" aria-label="Truth-or-consequences accountability levels">
       <div><b>Level 1</b><p>Documented public falsehood or contract violation: public correction and a mandatory record entry.</p></div>
@@ -467,19 +465,16 @@ footer .fine{font-size:.82rem;max-width:90ch}
 <!-- BOOK -->
 <section id="book" aria-labelledby="book-h">
   <div class="wrap book">
-    <div class="cover" role="img" aria-label="Book cover: Renovation of the People's House">
-      <span class="a">Robert Jastremski</span>
-      <span class="t">Renovation of the People’s House</span>
-      <span class="s">A Manual for the Generation Holding the Bill</span>
-    </div>
+    <a class="cover" href="https://www.amazon.com/Only-People-Can-Save-Democracy/dp/B0HGXWTMB3" target="_blank" rel="noopener"><img src="images/book-cover.png" width="728" height="1004" loading="lazy" alt="Book cover: Only “We, The People” Can Save Democracy, by Robert Jastremski, Holistic Engineer"></a>
     <div style="display:grid;gap:18px;min-width:0">
-      <span class="spec">The book behind the Corps</span>
+      <span class="spec">A new book · available on Amazon</span>
       <h2 id="book-h">A manual for the generation holding the bill</h2>
       <div class="prose">
-        <p><em>Renovation of the People’s House</em> is a diagnosis and renovation plan for the U.S. Congress, written by Robert Jastremski, a holistic systems engineer with a 55-year career and eight years lobbying members of Congress directly, with Stephen Matheny, college professor, innovator and futurist.</p>
+        <p><em>Only “We, The People” Can Save Democracy</em> is a diagnosis and renovation plan for the U.S. Congress, written by Robert Jastremski, a holistic systems engineer with a 55-year career and eight years lobbying members of Congress directly, with Stephen Matheny, college professor, innovator and futurist.</p>
         <p>In 1969, humans landed on the moon because engineers were in charge of the engineering problem. The book applies the same whole-system thinking to Congress: find the failure points, design for them, and measure what matters. It covers the scoreboard Congress gets wrong, the case for an annual national business plan, employment contracts for members, and the 340-million-person brain trust Congress has no way to hear.</p>
       </div>
       <div class="video">
+        <a class="btn btn-caution" href="https://www.amazon.com/Only-People-Can-Save-Democracy/dp/B0HGXWTMB3" target="_blank" rel="noopener">Buy the book on Amazon</a>
         <a class="btn btn-blue" href="#book">Watch the 3-minute video</a>
         <span class="form-note">Video link: <span class="ph">[insert YouTube URL]</span></span>
       </div>
@@ -525,7 +520,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
       </div>
     </div>
     <p>Contact: <span class="ph">[insert email]</span> · Social links: <span class="ph">[insert handles]</span></p>
-    <p class="fine">The Civic Impact Corps is nonpartisan and does not endorse political parties. The proposed constitutional amendments are working drafts intended for public discussion and coalition-building; they are not legal advice and have not been formally introduced in Congress. Statistics come from publicly available government and polling sources cited in <em>Renovation of the People’s House</em> by Robert Jastremski with Stephen Matheny. © 2026 Robert Jastremski.</p>
+    <p class="fine">The Civic Impact Corps is nonpartisan and does not endorse political parties. The proposed constitutional amendments are working drafts intended for public discussion and coalition-building; they are not legal advice and have not been formally introduced in Congress. Statistics come from publicly available government and polling sources cited in <em>Only “We, The People” Can Save Democracy</em> by Robert Jastremski with Stephen Matheny. © 2026 Robert Jastremski.</p>
   </div>
 </footer>
 
