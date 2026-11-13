@@ -251,6 +251,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
         </div>
       </div>
       <p class="prose">Elected members who sign a commitment to co-sponsor or support the renovation amendment development process once in office earn the CIC members’ support.</p>
+      <div><a class="btn btn-blue" href="https://docs.google.com/forms/d/e/1FAIpQLSfzvJPS2ywNbRCcnBPNx-cakg1DhxWCAIJYMY-FiS-RXNwZbQ/viewform" target="_blank" rel="noopener">Member of Congress? Sign the renovation pledge</a></div>
     </div>
 
     <form class="form" id="join" novalidate>
@@ -603,16 +604,35 @@ footer .fine{font-size:.82rem;max-width:90ch}
     try{navigator.clipboard.writeText(text).then(function(){msg.textContent='Copied. Now go ask.';},fallback);}catch(e){fallback();}
   });
 
-  // Sign-up form (not yet connected to a sign-up service)
+  // Sign-up form → Google Form "Civic Impact Corps — Membership Pledge" (civicimpactcorps@gmail.com)
+  var GF='https://docs.google.com/forms/d/e/1FAIpQLSfQ7NbyS2i_SZ8Ar4aa3haoVNgg5lbNkHxRJvtThzA-_VRXPQ/formResponse';
+  var GF_VIEW='https://docs.google.com/forms/d/e/1FAIpQLSfQ7NbyS2i_SZ8Ar4aa3haoVNgg5lbNkHxRJvtThzA-_VRXPQ/viewform';
   var form=document.getElementById('join'),done=document.getElementById('form-done');
+  var submitBtn=form.querySelector('button[type="submit"]');
+  function val(id){return document.getElementById(id).value.trim();}
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var missing=[].filter.call(form.querySelectorAll('[required]'),function(i){return !i.value.trim();});
-    var email=document.getElementById('f-email');
+    var email=document.getElementById('f-email'),zip=document.getElementById('f-zip');
     done.hidden=false;
     if(missing.length){done.textContent='Please fill in your name, email and ZIP code so we can match you to your state team.';missing[0].focus();return;}
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){done.textContent='That email address looks incomplete. Check it and try again.';email.focus();return;}
-    done.textContent='Online sign-up opens soon. This form is not yet connected, so your details were not saved. [Connect to sign-up service before launch.]';
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())){done.textContent='That email address looks incomplete. Check it and try again.';email.focus();return;}
+    if(!/^\d{5}(-\d{4})?$/.test(zip.value.trim())){done.textContent='Enter a 5-digit ZIP code.';zip.focus();return;}
+    var data=new URLSearchParams();
+    data.append('entry.841393621',val('f-first'));
+    data.append('entry.1911914412',val('f-last'));
+    data.append('entry.1074298998',val('f-email'));
+    data.append('entry.1162218665',val('f-zip'));
+    data.append('entry.1391546913',document.getElementById('f-role').value);
+    if(document.getElementById('f-reg').checked)data.append('entry.958778255','I’m registered to vote at my current address.');
+    submitBtn.disabled=true;done.textContent='Signing you up…';
+    fetch(GF,{method:'POST',mode:'no-cors',body:data}).then(function(){
+      form.reset();
+      done.textContent='Thank you for signing the pledge. You’re in. Now bring three people with you.';
+    },function(){
+      done.innerHTML='';done.append('We couldn’t reach the sign-up service. ');
+      var a=document.createElement('a');a.href=GF_VIEW;a.target='_blank';a.rel='noopener';a.textContent='Sign the pledge on Google Forms instead';done.append(a,'.');
+    }).finally(function(){submitBtn.disabled=false;});
   });
 })();
 </script>
