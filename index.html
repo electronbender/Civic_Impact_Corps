@@ -61,11 +61,11 @@ section{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
 @media (max-width:820px){
   .top .wrap{position:relative;padding-block:8px}
   .brand{min-height:44px}
-  .menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);font:inherit;font-family:var(--f-mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;padding:0;background:transparent;color:#fff;border:0;cursor:pointer}
   .menu-btn:focus-visible{outline:2px solid var(--caution);outline-offset:2px}
-  .menu-btn .bars,.menu-btn .bars::before,.menu-btn .bars::after{display:block;width:18px;height:2px;background:currentColor;position:relative}
+  .menu-btn .bars,.menu-btn .bars::before,.menu-btn .bars::after{display:block;width:24px;height:2px;background:currentColor;position:relative}
   .menu-btn .bars::before,.menu-btn .bars::after{content:"";position:absolute;left:0}
-  .menu-btn .bars::before{top:-6px}.menu-btn .bars::after{top:6px}
+  .menu-btn .bars::before{top:-7px}.menu-btn .bars::after{top:7px}
   .top.open .menu-btn .bars{background:transparent}
   .top.open .menu-btn .bars::before{top:0;transform:rotate(45deg)}
   .top.open .menu-btn .bars::after{top:0;transform:rotate(-45deg)}
@@ -76,7 +76,6 @@ section{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
 }
 @media (max-width:380px){
   .brand{font-size:1.08rem;gap:8px;white-space:nowrap}
-  .menu-btn{padding:0 10px;gap:8px}
 }
 
 /* hero */
@@ -246,7 +245,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
       <img src="assets/cic-logo-5.png" width="34" height="30" alt="">
       Civic Impact Corps
     </a>
-    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span>Menu</button>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="bars" aria-hidden="true"></span></button>
     <nav class="nav" id="site-nav" aria-label="Main">
       <a href="#pledge">The Pledge</a>
       <a href="#plan">From Protest to Plan</a>
@@ -657,7 +656,7 @@ footer .fine{font-size:.82rem;max-width:90ch}
 
   // Phone menu
   var top=document.querySelector('.top'),mbtn=document.getElementById('menu-btn'),nav=document.getElementById('site-nav');
-  function setMenu(open){top.classList.toggle('open',open);mbtn.setAttribute('aria-expanded',open?'true':'false');mbtn.lastChild.textContent=open?'Close':'Menu';}
+  function setMenu(open){top.classList.toggle('open',open);mbtn.setAttribute('aria-expanded',open?'true':'false');mbtn.setAttribute('aria-label',open?'Close menu':'Open menu');}
   mbtn.addEventListener('click',function(){setMenu(!top.classList.contains('open'));});
   nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&top.classList.contains('open')){setMenu(false);mbtn.focus();}});
