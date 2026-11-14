@@ -138,6 +138,13 @@ details .text b{color:var(--ink)}
 @media (max-width:820px){.tiers{grid-template-columns:1fr}}
 .tier{display:grid;gap:8px;align-content:start;padding-top:14px;border-top:3px solid var(--caution)}
 
+/* contact pop-up */
+.contact-pop{border:2px solid var(--ink);background:var(--surface);color:var(--ink);padding:24px;max-width:min(420px,calc(100vw - 32px));display:none;gap:14px}
+.contact-pop[open]{display:grid}
+.contact-pop::backdrop{background:rgba(10,19,38,.6)}
+.contact-pop a{color:inherit;font-weight:700;overflow-wrap:anywhere}
+.contact-pop form{margin:0}
+
 /* protest to plan */
 .threats{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);border-top:2px solid var(--ink)}
 .threats li{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:baseline;min-width:0}
@@ -251,7 +258,12 @@ footer .fine{font-size:.82rem;max-width:90ch}
         </div>
       </div>
       <p class="prose">Elected members who sign a commitment to co-sponsor or support the renovation amendment development process once in office earn the CIC members’ support.</p>
-      <div><a class="btn btn-blue" href="https://docs.google.com/forms/d/e/1FAIpQLSfzvJPS2ywNbRCcnBPNx-cakg1DhxWCAIJYMY-FiS-RXNwZbQ/viewform" target="_blank" rel="noopener">Member of Congress? Sign the renovation pledge</a></div>
+      <div><button class="btn btn-blue" type="button" id="congress-btn" aria-haspopup="dialog">Member of Congress? Sign the renovation pledge</button></div>
+      <dialog class="contact-pop" id="congress-pop" aria-labelledby="congress-pop-h">
+        <h3 id="congress-pop-h">Member of Congress?</h3>
+        <p>Please contact us directly at <a href="mailto:civicimpactcorps@gmail.com">civicimpactcorps@gmail.com</a></p>
+        <form method="dialog"><button class="btn btn-blue" type="submit">Close</button></form>
+      </dialog>
     </div>
 
     <form class="form" id="join" novalidate>
@@ -603,6 +615,13 @@ footer .fine{font-size:.82rem;max-width:90ch}
     function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('script'));var s=window.getSelection();s.removeAllRanges();s.addRange(r);msg.textContent='Selected. Press Ctrl+C or ⌘C to copy.';}
     try{navigator.clipboard.writeText(text).then(function(){msg.textContent='Copied. Now go ask.';},fallback);}catch(e){fallback();}
   });
+
+  // Member of Congress contact pop-up
+  var cbtn=document.getElementById('congress-btn'),cpop=document.getElementById('congress-pop');
+  cbtn.addEventListener('click',function(){
+    if(cpop.showModal){cpop.showModal();}else{alert('Please contact us directly at civicimpactcorps@gmail.com');}
+  });
+  cpop.addEventListener('click',function(e){if(e.target===cpop)cpop.close();});
 
   // Sign-up form → Google Form "Civic Impact Corps — Membership Pledge" (civicimpactcorps@gmail.com)
   var GF='https://docs.google.com/forms/d/e/1FAIpQLSfQ7NbyS2i_SZ8Ar4aa3haoVNgg5lbNkHxRJvtThzA-_VRXPQ/formResponse';
