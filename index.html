@@ -63,7 +63,14 @@ section{padding-block:clamp(56px,8vw,96px);border-top:1px solid var(--line)}
   background-image:linear-gradient(var(--hero-grid) 1px,transparent 1px),linear-gradient(90deg,var(--hero-grid) 1px,transparent 1px);background-size:32px 32px;position:relative;overflow:hidden}
 .hero .wrap{display:grid;gap:28px}
 .hero h1{font-size:clamp(3.2rem,10.5vw,7.4rem);font-weight:900;max-width:11ch}
-.hero h1 .hero-logo{display:inline-block;height:.82em;width:auto;vertical-align:baseline}
+/* Logo beside the heading: 3.8em = 4 lines x .95 line-height, i.e. the heading's full height; shrinks to the room left when narrower */
+.hero-title{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 .25em;align-items:start;font-size:clamp(3.2rem,10.5vw,7.4rem)}
+.hero-title h1{font-size:1em}
+.hero-logo{display:block;width:min(3.8em,100%);height:auto;aspect-ratio:1;align-self:center}
+@media (max-width:640px){
+  .hero-title{grid-template-columns:1fr;gap:.18em}
+  .hero-logo{order:-1;width:1.9em}
+}
 .hero .lede{font-size:clamp(1.1rem,2.2vw,1.35rem);max-width:56ch;color:#E3EBFA}
 .hero .lede strong{color:#fff}
 .hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -234,7 +241,10 @@ footer .fine{font-size:.82rem;max-width:90ch}
 <section class="hero" aria-labelledby="hero-h">
   <div class="wrap">
     <span class="spec">Civic Impact Corps · The voice of “We the People” in Congressional oversight</span>
-    <h1 id="hero-h">Sign the pledge to renovate Congress <img class="hero-logo" src="assets/cic-logo-5-256.png" width="256" height="256" alt=""></h1>
+    <div class="hero-title">
+      <h1 id="hero-h">Sign the pledge to renovate Congress</h1>
+      <img class="hero-logo" src="assets/cic-logo-5-512.png" width="512" height="512" alt="">
+    </div>
     <p class="lede">Congress is running an operating system built for 1789. Swapping out the people inside hasn’t fixed it, because the problem is the machine, not the operators. <strong>Join the Corps and put every new member of the 120th Congress on the record for renovation support or not.</strong></p>
     <div class="countdown" id="countdown" aria-live="polite"><b id="days">51</b><span id="days-label">days until the 120th Congress is sworn in · Jan 3, 2027</span></div>
     <div class="ctas">
